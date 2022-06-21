@@ -16,9 +16,9 @@
 - [ ] Views
   - [ ] /tokens/create
   - [+] /tokens/list
-    - [ ] Pagination
+    - [+] Pagination
   - [+] /tokens/total_supply
 - [+] Configuration (.env)
-- [ ] Integration with web3
+- [+] Integration with web3
 
 ## .ENV file configuration

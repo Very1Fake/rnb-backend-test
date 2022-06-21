@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -23,10 +24,15 @@ def tokens_create(request):
 
 # TODO: Add pagination
 @api_view(["GET"])
-def tokens_list(_):
-    query = Token.objects.all()
+def tokens_list(request):
+    params = request.query_params
+
+    page = int(params.get("page", 1))
+    size = int(params.get("size", 20))
+
+    query = Paginator(Token.objects.order_by("-id"), size).page(page)
     serializer = TokenModelSerializer(query, many=True)
-    return Response({"tokens": serializer.data})
+    return Response({"page": page, "size": size, "tokens": serializer.data})
 
 
 @api_view(["GET"])
