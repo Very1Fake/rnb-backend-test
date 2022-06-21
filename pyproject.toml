@@ -6,7 +6,8 @@ authors = ["Timur Israpilov <very1fake.coder@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Django = "^3.2"
+Django = "3.2.13"
+djangorestframework = "3.13.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
