@@ -11,7 +11,7 @@
 - [ ] Docker Image
   - [ ] Image Building
   - [ ] Compose
-- [ ] SQLite Database (Models)
+- [+] SQLite Database (Models)
 - [ ] Swagger (drf-yasg)
 - [ ] Views
   - [ ] /tokens/create
@@ -19,5 +19,6 @@
     - [ ] Pagination
   - [ ] /tokens/total_supply
 - [ ] Configuration (.env)
+- [ ] Integration with web3
 
 ## .ENV file configuration
