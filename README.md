@@ -15,9 +15,9 @@
 - [ ] Swagger (drf-yasg)
 - [ ] Views
   - [ ] /tokens/create
-  - [ ] /tokens/list
+  - [+] /tokens/list
     - [ ] Pagination
-  - [ ] /tokens/total_supply
+  - [+] /tokens/total_supply
 - [+] Configuration (.env)
 - [ ] Integration with web3
 

@@ -1,7 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from .models import Token
 from .utils import sc_handle
+from .serializers import TokenModelSerializer
 
 
 @api_view(["POST"])
@@ -22,7 +24,9 @@ def tokens_create(request):
 # TODO: Add pagination
 @api_view(["GET"])
 def tokens_list(_):
-    return Response({"tokens": []})
+    query = Token.objects.all()
+    serializer = TokenModelSerializer(query, many=True)
+    return Response({"tokens": serializer.data})
 
 
 @api_view(["GET"])
