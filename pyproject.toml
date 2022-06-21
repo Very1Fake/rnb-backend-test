@@ -8,6 +8,8 @@ authors = ["Timur Israpilov <very1fake.coder@gmail.com>"]
 python = "^3.8"
 Django = "3.2.13"
 djangorestframework = "3.13.1"
+django-environ = "0.9.0"
+python-environ = "0.4.54"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

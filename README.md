@@ -18,7 +18,7 @@
   - [ ] /tokens/list
     - [ ] Pagination
   - [ ] /tokens/total_supply
-- [ ] Configuration (.env)
+- [+] Configuration (.env)
 - [ ] Integration with web3
 
 ## .ENV file configuration

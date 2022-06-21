@@ -10,22 +10,44 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+
 from pathlib import Path
+from environ import Env
+
+# Setup casting and default value for .env
+env = Env(
+    ALLOWED_HOSTS=(list[str], []),
+    SECRET_KEY=(str),
+    DEBUG=(bool, True),
+    CONTRACT_ADDRESS=(str),
+    INFURA_PROJECT_ID=(str),
+    SERVER_ETH_ADDRESS=(str),
+    PRIVATE_KEY=(str),
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-px*8p6d#9(6@lspor2_c7ge51)^tm)8@d@)$w_cd2!!)2inry$"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+
+# Eth address of target contract
+CONTRACT_ADDRESS = env("CONTRACT_ADDRESS")
+# Eth address of server account
+SERVER_ETH_ADDRESS = env("SERVER_ETH_ADDRESS")
+# Private key of server account
+PRIVATE_KEY = env("PRIVATE_KEY")
 
 
 # Application definition
