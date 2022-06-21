@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import os
+import json
+from os import path
 
 from pathlib import Path
 from environ import Env
+from environ.compat import ImproperlyConfigured
 
 # Setup casting and default value for .env
 env = Env(
@@ -24,12 +26,13 @@ env = Env(
     INFURA_PROJECT_ID=(str),
     SERVER_ETH_ADDRESS=(str),
     PRIVATE_KEY=(str),
+    CONTRACT_ABI=(str),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-Env.read_env(os.path.join(BASE_DIR, ".env"))
+Env.read_env(path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -42,6 +45,8 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
+# Infura Project ID
+INFURA_PROJECT_ID = env("INFURA_PROJECT_ID")
 # Eth address of target contract
 CONTRACT_ADDRESS = env("CONTRACT_ADDRESS")
 # Eth address of server account
@@ -49,6 +54,12 @@ SERVER_ETH_ADDRESS = env("SERVER_ETH_ADDRESS")
 # Private key of server account
 PRIVATE_KEY = env("PRIVATE_KEY")
 
+# Target contract ABI
+# You can set custom ABI through env
+try:
+    CONTRACT_ABI = env("CONTRACT_ABI")
+except ImproperlyConfigured:
+    CONTRACT_ABI = json.load(open(path.join(BASE_DIR, "abi/tokens.abi.json")))
 
 # Application definition
 
