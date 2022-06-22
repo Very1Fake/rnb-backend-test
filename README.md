@@ -63,7 +63,7 @@ make migrate
   - [x] Image Building
   - [x] Compose
 - [x] SQLite Database (Models)
-- [ ] Swagger (drf-yasg)
+- [x] Swagger (drf-yasg)
 - [x] Views
   - [x] /tokens/create
   - [x] /tokens/list
@@ -81,3 +81,11 @@ make migrate
 - PRIVATE_KEY - Private key for server
 - CONTRACT_ADDRESS - Ethereum address of target smart contract
 - GAS_TOKEN_CREATE - The amount of gas for token minting (default: `400000`)
+
+## Endpoints
+
+- `/admin` - Django admin panel
+- `/swagger` - Swagger docs
+- `/tokens/create` - Create NFT token
+- `/tokens/list` - List created tokens
+- `/tokens/total_supply` - NFT contract total supply
