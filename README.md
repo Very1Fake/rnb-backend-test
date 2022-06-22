@@ -62,6 +62,8 @@ poetry run python manage.py runserver
 
 ## .ENV file configuration
 
+- DJANGO_PORT - Port that django will use (docker only)
+- DOCKER_EXPOSE_PORT - External port (docker only)
 - INFURA_PROJECT_ID - Infura project id. Used by Web3.py to make RPC calls
 - SERVER_ETH_ADDRESS - Ethereum address that will be used by server to sign transactions
 - PRIVATE_KEY - Private key for server
