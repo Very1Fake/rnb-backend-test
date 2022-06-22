@@ -28,7 +28,7 @@ env = Env(
     PRIVATE_KEY=(str),
     CONTRACT_ADDRESS=(str),
     CONTRACT_ABI=(str),
-    GAS_TOKEN_CREATE=(int),
+    GAS_TOKEN_CREATE=(int, 400000),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -51,8 +51,6 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 INFURA_PROJECT_ID = env("INFURA_PROJECT_ID")
 # Eth address of server account
 SERVER_ETH_ADDRESS = env("SERVER_ETH_ADDRESS")
-# Address of server account
-SELF_ADDRESS = env("SELF_ADDRESS")
 # Private key of server account. HEX-string
 PRIVATE_KEY = env("PRIVATE_KEY")
 

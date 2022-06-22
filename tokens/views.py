@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from rnb_backend_test.settings import PRIVATE_KEY, GAS_TOKEN_CREATE
+from rnb_backend_test.settings import PRIVATE_KEY, GAS_TOKEN_CREATE, SERVER_ETH_ADDRESS
 
 from .models import Token
 from .utils import sc_handle
@@ -41,8 +41,8 @@ def tokens_create(request):
             "gas": GAS_TOKEN_CREATE,
             "maxFeePerGas": w3.toWei("2", "gwei"),
             "maxPriorityFeePerGas": w3.toWei("1", "gwei"),
-            "from": account.address,
-            "nonce": w3.eth.get_transaction_count(account.address),
+            "from": SERVER_ETH_ADDRESS,
+            "nonce": w3.eth.get_transaction_count(SERVER_ETH_ADDRESS),
         }
     )
     # Signed transaction
