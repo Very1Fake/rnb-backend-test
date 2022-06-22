@@ -43,13 +43,25 @@ And now you can run the server:
 poetry run python manage.py runserver
 ```
 
-#### Docker (TODO)
+#### Docker
+
+To launch docker just enter:
+
+```bash
+make up_build
+```
+
+To make migrations:
+
+```bash
+make migrate
+```
 
 ## Features
 
-- [ ] Docker Image
-  - [ ] Image Building
-  - [ ] Compose
+- [x] Docker Image
+  - [x] Image Building
+  - [x] Compose
 - [x] SQLite Database (Models)
 - [ ] Swagger (drf-yasg)
 - [x] Views
