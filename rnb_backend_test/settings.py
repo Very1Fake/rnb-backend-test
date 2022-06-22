@@ -22,11 +22,13 @@ env = Env(
     ALLOWED_HOSTS=(list[str], []),
     SECRET_KEY=(str),
     DEBUG=(bool, True),
-    CONTRACT_ADDRESS=(str),
     INFURA_PROJECT_ID=(str),
     SERVER_ETH_ADDRESS=(str),
+    SELF_ADDRESS=(str),
     PRIVATE_KEY=(str),
+    CONTRACT_ADDRESS=(str),
     CONTRACT_ABI=(str),
+    GAS_TOKEN_CREATE=(int),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,22 +49,28 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 # Infura Project ID
 INFURA_PROJECT_ID = env("INFURA_PROJECT_ID")
-# Eth address of target contract
-CONTRACT_ADDRESS = env("CONTRACT_ADDRESS")
 # Eth address of server account
 SERVER_ETH_ADDRESS = env("SERVER_ETH_ADDRESS")
-# Private key of server account
+# Address of server account
+SELF_ADDRESS = env("SELF_ADDRESS")
+# Private key of server account. HEX-string
 PRIVATE_KEY = env("PRIVATE_KEY")
 
+
+# Eth address of target contract
+CONTRACT_ADDRESS = env("CONTRACT_ADDRESS")
+
 # Target contract ABI
-# You can set custom ABI through env
+# You can overwrite ABI via env
 try:
     CONTRACT_ABI = env("CONTRACT_ABI")
 except ImproperlyConfigured:
     CONTRACT_ABI = json.load(open(path.join(BASE_DIR, "abi/tokens.abi.json")))
 
-# Application definition
+# The amount of gas that will used to create tokens
+GAS_TOKEN_CREATE = env("GAS_TOKEN_CREATE")
 
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
